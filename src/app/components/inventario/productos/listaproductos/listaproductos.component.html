@@ -1,0 +1,32 @@
+<p-table [value]="productos">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Código</th>
+      <th>Marca</th>
+      <th>Nombre</th>
+      <th>Categoria</th>
+      <th>Stock</th>
+      <th>Precio Compra</th>
+      <th>Precio Venta</th>
+      <th>Opciones</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-producto>
+    <tr>
+      <td>{{producto.codigo}}</td>
+      <td>{{producto.idmarca}}</td>
+      <td>{{producto.nombre}}</td>
+      <td>{{producto.idcategoria}}</td>
+      <td>{{producto.stock}} {{producto.unidadmedida}}</td>
+      <td>{{producto.preciocompra|currency}}</td>
+      <td>{{producto.precioventa|currency}}</td>
+      <td>
+        <button (click)="edit(producto)" pButton type="button" icon="pi pi-pencil"
+          class="button ui-button-raised ui-button-primary"></button>
+          
+        <button (click)="delete(producto.id)" pButton type="button" icon="pi pi-trash"
+          class="button ui-button-raised ui-button-danger"></button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

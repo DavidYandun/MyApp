@@ -1,0 +1,13 @@
+<div class="titulo">
+  <h2>Categorías</h2>
+  <div class="text-right">
+    <button pButton type="button" label="Nuevo" icon="pi pi-plus" (click)="openForm()"
+      class="ui-button-raised ui-button-secondary"></button>
+  </div>
+</div>
+
+<div class="container">
+  <app-formcategoria *ngIf="mostrarForm" [refresh]="refresh" (closeForm)="closeForm($event)"></app-formcategoria>
+  <app-listacategorias (openForm)="openForm($event)"></app-listacategorias>
+  <p-toast position="top-right"></p-toast>
+</div>

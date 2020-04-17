@@ -1,3 +1,4 @@
+import { MenuItem } from 'primeng/api/menuitem';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,9 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  cambioComponente: boolean = true;
+  display: boolean = false;
 
-  metodo() {
-    this.cambioComponente = !this.cambioComponente;
-  }
+  breadcrumb: MenuItem[] = [
+    { label: 'Inicio', routerLink: '' },
+    { label: 'Productos', routerLink: 'productos' }
+  ];
+
+
 }
