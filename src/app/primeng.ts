@@ -19,17 +19,19 @@ import { ToastModule } from 'primeng/toast';
 import { MenuModule } from 'primeng/menu';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
-
+//import { DropdownModule } from 'primeng/dropdown';
 import { from } from 'rxjs';
 
 @NgModule({
     imports: [CardModule, ButtonModule, KeyFilterModule, InputTextModule, InputSwitchModule,
         CheckboxModule, InputTextareaModule, TableModule, DialogModule, CalendarModule, ToolbarModule
         , FieldsetModule, SplitButtonModule, RadioButtonModule, ToggleButtonModule,
-        SidebarModule, MenuModule, PanelMenuModule, ToastModule,BreadcrumbModule],
+        SidebarModule, MenuModule, PanelMenuModule, ToastModule, BreadcrumbModule,
+        ],
     exports: [CardModule, ButtonModule, KeyFilterModule, InputTextModule, InputSwitchModule,
         CheckboxModule, InputTextareaModule, TableModule, DialogModule, CalendarModule, ToolbarModule
         , FieldsetModule, SplitButtonModule, RadioButtonModule, ToggleButtonModule,
-        SidebarModule, MenuModule, PanelMenuModule, ToastModule,BreadcrumbModule]
+        SidebarModule, MenuModule, PanelMenuModule, ToastModule, BreadcrumbModule,
+        ]
 })
 export class PrimeNgModule { };

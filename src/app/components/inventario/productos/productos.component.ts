@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductosComponent implements OnInit {
 
+  mostrarForm: boolean = true;
   constructor() { }
 
   ngOnInit() {
+  }
+
+  openForm() {
+    this.mostrarForm = true;
   }
 
 }
