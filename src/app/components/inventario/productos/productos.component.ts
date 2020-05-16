@@ -1,3 +1,4 @@
+import { MessageService } from 'primeng/api';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,14 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductosComponent implements OnInit {
 
-  mostrarForm: boolean = true;
-  constructor() { }
+  mostrarForm: boolean = false;
+  constructor(private messageService: MessageService) { }
 
   ngOnInit() {
   }
 
-  openForm() {
+  abrirForm(e) {
     this.mostrarForm = true;
+  }
+  cerrarForm(e) {
+    this.mostrarForm = false;
+    this.mostrarMensaje(e);
+  }
+
+  mostrarMensaje(mensaje) {
+    this.messageService.add({ severity: 'info', summary: mensaje, detail: '' });
   }
 
 }

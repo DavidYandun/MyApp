@@ -21,7 +21,7 @@ import { ListacategoriasComponent } from './components/inventario/categorias/lis
 import { MenuComponent } from './components/general/menu/menu.component';
 import { FormcategoriaComponent } from './components/inventario/categorias/formcategoria/formcategoria.component';
 import { FormproductoComponent } from './components/inventario/productos/formproducto/formproducto.component';
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +47,8 @@ import { FormproductoComponent } from './components/inventario/productos/formpro
     BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
-    PrimeNgModule
+    PrimeNgModule,
+    HttpClientModule,
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

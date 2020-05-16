@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { ProductoService } from './../../../../servicios/inventario/producto.service';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ProductoInterface } from 'src/app/modelos/producto';
 
 @Component({
@@ -8,72 +9,27 @@ import { ProductoInterface } from 'src/app/modelos/producto';
 })
 export class ListaproductosComponent implements OnInit {
 
+  @Output() openForm = new EventEmitter;
+
   productos: ProductoInterface[];
 
-  constructor() { }
+  constructor(private productoService: ProductoService) { }
 
   ngOnInit() {
-    this.productos = [
-      {
-        id: 1,
-        codigo: 'PROD_1',
-        idubicacion: 1,
-        idcategoria: 1,
-        idmarca: 1,
-        nombre: 'Arroz',
-        entradas: 0,
-        salidas: 0,
-        stock: 10,
-        unidadmedida: 'kilos',
-        preciocompra: 11.00,
-        precioventa: 15.00,
-        precioventamayor: 14.00,
-        servicio: false,
-        estado: true,
-        descripcion: 'Sin descripción'
-      },
-      {
-        id: 2,
-        codigo: 'PROD_2',
-        idubicacion: 1,
-        idcategoria: 1,
-        idmarca: 1,
-        nombre: 'Azucar',
-        entradas: 0,
-        salidas: 0,
-        stock: 34,
-        unidadmedida: 'libras',
-        preciocompra: 8.00,
-        precioventa: 13.00,
-        precioventamayor: 10.00,
-        servicio: false,
-        estado: true,
-        descripcion: 'Sin descripción'
-      },
-      {
-        id: 3,
-        codigo: 'PROD_3',
-        idubicacion: 1,
-        idcategoria: 1,
-        idmarca: 1,
-        nombre: 'Papas',
-        entradas: 0,
-        salidas: 0,
-        stock: 56,
-        unidadmedida: 'libras',
-        preciocompra: 9.00,
-        precioventa: 32.00,
-        precioventamayor: 14.00,
-        servicio: false,
-        estado: true,
-        descripcion: 'Sin descripción'
-      }
-    ]
+    this.all();
+  }
+
+  all() {
+    this.productoService.all().subscribe(data => {
+      this.productos = data;
+    }
+    );
   }
 
   edit(producto) {
     console.log(producto);
-
+    this.openForm.emit('Evento activado desde listaproductos');
+    this.productoService.productoSelect = producto;
   }
 
   delete(id) {

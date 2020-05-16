@@ -4,3 +4,7 @@
 input{
     width: 100%;
 }
+
+.alert{
+    padding: 0px;
+}

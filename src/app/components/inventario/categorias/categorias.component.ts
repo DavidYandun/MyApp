@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
 @Component({
   selector: 'app-categorias',
-  templateUrl: './categorias.component.html',
+  templateUrl:'./categorias.component.html',
   styleUrls: ['./categorias.component.css']
 })
 export class CategoriasComponent implements OnInit {

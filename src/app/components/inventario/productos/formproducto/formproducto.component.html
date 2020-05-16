@@ -1,89 +1,103 @@
-<p-card >
-  <form>
-    <!--id debe ir oculto-->
-    id:<input type="text">
+<p-card class="container card" header="Nuevo Producto">
+  <form [formGroup]="Form" (ngSubmit)="enviarForm(Form.value)">
+    <!--estos input deben ir ocultos-->
+    <input formControlName="id" type="hidden">
+    <input formControlName="entradas" type="hidden">
+    <input formControlName="salidas" type="hidden">
     <!--codigo y estado del producto-->
     <div class="row">
       <div class="form-group col-md-10">
         <span> Código</span>
-        <input type="text" pInputText placeholder="Código de Barras">
+        <input formControlName="codigo" type="text" pInputText placeholder="Código de Barras">
+        <!--Control de errores-->
+        <div class="alert alert-danger" *ngIf="codigo.invalid && (codigo.dirty || codigo.touched)">
+          <div *ngIf="codigo.errors.required">
+            El código es requerido
+          </div>
+        </div>
       </div>
       <div class="form-group col-md-2">
-        <h6>Estado </h6>
-        <p-inputSwitch></p-inputSwitch>
+        <h6>Estado</h6>
+        <p-inputSwitch formControlName="estado"></p-inputSwitch>
       </div>
     </div>
     <!--nombre-->
     <div class="row">
       <div class="form-group col-lg-12">
         <span>Nombre</span>
-        <input type="text" pInputText placeholder="Nombre del producto... Ej. Azucar Morena">
+        <input formControlName="nombre" type="text" pInputText placeholder="Nombre del producto... Ej. Azucar Morena">
       </div>
     </div>
     <!--Tres menús ubicacion, categoria, marca-->
     <div class="row">
       <div class="form-group col-md-4">
-        <span>Ubicación</span>
-        <input type="text" name="" id="" pInputText>
+        <span>Ubicación: </span>
+        <p-dropdown formControlName="idubicacion" [options]="ubicaciones" [filter]="true" autoWidth="true"
+          [style]="{'width':'100%'}"></p-dropdown>
       </div>
       <div class="form-group col-md-4">
-        <span>Categoría</span>
-        <input type="text" name="" id="" pInputText>
+        <span>Categoría: </span>
+        <p-dropdown formControlName="idcategoria" [options]="categorias" [filter]="true" autoWidth="true"
+          [style]="{'width':'100%'}"></p-dropdown>
       </div>
       <div class="form-group col-md-4">
-        <span>Marca</span>
-        <input type="text" name="" id="" pInputText>
+        <span>Marca: </span>
+        <p-dropdown formControlName="idmarca" [options]="marcas" [filter]="true" autoWidth="true"
+          [style]="{'width':'100%'}"></p-dropdown>
       </div>
     </div>
     <!--entradas y salidas no están en el formulario-->
     <!--fila de stock y precios-->
     <div class="row">
-      <div class="form-group col-lg-2 col-md-4 col-sm-6">
+      <div class="form-group col-lg-1 col-md-4 col-sm-6">
         <span>Stock</span>
-        <input type="number" name="" id="" pInputText pKeyFilter="pnum">
+        <input formControlName="stock" name="" id="" pInputText placeholder="0" pKeyFilter="pnum">
       </div>
-      <div class="form-group col-lg-2 col-md-4 col-sm-6">
+      <div class="form-group col-lg-3 col-md-4 col-sm-6">
         <span>Unidad Medida</span>
-        
+        <p-dropdown formControlName="unidadmedida" [options]="unidadesmedida" [filter]="true" autoWidth="true"
+          [style]="{'width':'100%'}"></p-dropdown>
       </div>
       <div class="form-group col-lg-2 col-md-4 col-sm-6">
         <span>Precio Compra</span>
         <div class="ui-inputgroup">
           <span class="ui-inputgroup-addon">$</span>
-          <input type="number" name="" id="" pInputText placeholder="0.00" pKeyFilter="pnum">
+          <input formControlName="preciocompra" name="" id="" pInputText placeholder="0.00" pKeyFilter="pnum">
         </div>
       </div>
       <div class="form-group col-lg-2 col-md-4 col-sm-6">
         <span>Precio Venta</span>
         <div class="ui-inputgroup">
           <span class="ui-inputgroup-addon">$</span>
-          <input type="number" name="" id="" pInputText placeholder="0.00" pKeyFilter="pnum">
+          <input formControlName="precioventa" name="" id="" pInputText placeholder="0.00" pKeyFilter="pnum">
         </div>
       </div>
       <div class="form-group col-lg-2 col-md-4 col-sm-6">
         <span>P. Venta Mayor</span>
         <div class="ui-inputgroup">
           <span class="ui-inputgroup-addon">$</span>
-          <input type="number" name="" id="" pInputText placeholder="0.00" pKeyFilter="pnum">
+          <input formControlName="precioventamayor" name="" id="" pInputText placeholder="0.00" pKeyFilter="pnum">
         </div>
       </div>
       <div class="form-group col-lg-2 col-md-4 col-sm-6">
         <h6>Servicio </h6>
-        <p-inputSwitch></p-inputSwitch>
+        <p-inputSwitch formControlName="servicio"></p-inputSwitch>
       </div>
     </div>
     <!--descripcion-->
     <div class="row">
       <div class="form-group col-lg-12">
         <span>Descripción</span>
-        <textarea pInputTextarea></textarea>
-
+        <textarea formControlName="descripcion" pInputTextarea
+          placeholder="Escriba una descripción de su producto..."></textarea>
       </div>
     </div>
     <!--Botones-->
     <div class="row">
-      <button pButton type="button" label="Cancelar" class="col-md-6 ui-button-raised ui-button-secondary"></button>
-      <button pButton type="button" label="Guardar" class="col-md-6 ui-button-raised ui-button-primary"></button>
+      <button pButton (click)="cerrarForm()" type="button" label="Cancelar"
+        class="col-md-6 ui-button-raised ui-button-secondary"></button>
+      <button pButton [disabled]="!Form.valid" type="submit" label="Guardar"
+        class="col-md-6 ui-button-raised ui-button-primary"></button>
     </div>
   </form>
 </p-card>

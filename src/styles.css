@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+
+/*Estilos de formulario*/
+.form-group{
+    width: 100%;
+}
+input,textarea{
+    width: 100%;
+}
+.card{
+    max-width: 80%;
+}
+.alert{
+    padding:0px;
+}

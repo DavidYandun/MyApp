@@ -1,15 +1,22 @@
 <p-card class="container" header="{{ !Form.value.id?'Nueva Categoria':'Actualizar Categoria'}}">
   <form [formGroup]="Form" (ngSubmit)="enviarForm(Form.value)">
-    <input formControlName="id" id="id" type="hidden"><!--input oculto-->
+    <!--input oculto-->
+    <input formControlName="id" id="id" type="hidden">
+
     <div class="row">
       <div class="form-group">
         <span>Nombre</span>
         <input formControlName="nombre" id="nombre" type="text" pInputText placeholder="Ej: Enlatados">
+        <!--control de errores-->
+        <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+          <div *ngIf="nombre.errors.required"> Nombre es requerido </div>
+        </div>
       </div>
     </div>
+
     <!--Botones de acción-->
     <div class="row">
-      <button pButton type="submit" label="Cancelar" (click)="cancelar()"
+      <button pButton type="button" label="Cancelar" (click)="cancelar()"
         class="col-lg-6 buttonForm ui-button-raised ui-button-secondary"></button>
       <button pButton type="submit" label="Guardar" [disabled]="!Form.valid"
         class="col-lg-6 buttonForm ui-button-raised"></button>

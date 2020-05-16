@@ -50,5 +50,5 @@ export class FormcategoriaComponent implements OnChanges {
     this.onResetForm();
   }
 
-
+  get nombre() { return this.Form.get('nombre') };
 }
